@@ -36,13 +36,7 @@ export default function RadarChart() {
                 strokeColor: '#FF4560',
                 strokeWidth: 2,
             },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return val
-                    }
-                }
-            },
+
             xaxis: {
                 categories: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
             },

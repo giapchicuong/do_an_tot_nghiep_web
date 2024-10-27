@@ -38,7 +38,7 @@ export default function ButtonCalendar() {
 
                 <div className="flex items-center justify-between rounded border-stroke bg-inputPlaceholder border px-1 ">
 
-                    <div className="text-xs font-semibold text-stroke">Tháng 10</div>
+                    <div className="text-xs font-semibold text-stroke">Hôm nay</div>
 
                     {!isOpen
                         ? <RiArrowDropDownLine className="text-3xl font-semibold text-stroke" />

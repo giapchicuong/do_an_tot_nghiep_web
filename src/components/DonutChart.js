@@ -22,11 +22,7 @@ export default function DonutChart() {
             fill: {
                 type: 'gradient',
             },
-            legend: {
-                formatter: function (val, opts) {
-                    return val + " - " + opts.w.globals.series[opts.seriesIndex]
-                }
-            },
+
 
             responsive: [{
                 breakpoint: 480,

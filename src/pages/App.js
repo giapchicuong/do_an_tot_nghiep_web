@@ -10,6 +10,7 @@ import AreaChart from "../components/AreaChart";
 import DefaultTable from "../components/DefaultTable";
 import ButtonCalendar from "../components/ButtonCalendar";
 import { overviewTable } from "../mockData";
+import ColumnStarChart from "../sections/appPage/ColumnStarChart";
 
 export default function App() {
 
@@ -45,7 +46,7 @@ export function DashboardPage() {
 
       <h1 className="text-[32px] font-semibold">Tổng quan</h1>
 
-      {/* <div className="grid grid-cols-4 gap-10">
+      <div className="grid grid-cols-4 gap-10">
 
         <div className="w-full p-3 flex flex-col justify-between aspect-video bg-white rounded-[14px] shadow-sm">
 
@@ -53,7 +54,7 @@ export function DashboardPage() {
 
             <div className="flex flex-col gap-2">
 
-              <p className="text-base font-normal text-stroke">Tổng người mua hàng</p>
+              <p className="text-base font-normal text-stroke">Tổng số lượt đánh giá trái cây</p>
 
               <p className="text-[28px] font-bold">10.000</p>
             </div>
@@ -70,7 +71,7 @@ export function DashboardPage() {
 
             <p className="text-base font-normal text-uptrend">8.5%</p>
 
-            <p className="text-base font-normal text-uptrendText">Up from yesterday</p>
+            <p className="text-base font-normal text-uptrendText">so với hôm qua</p>
           </div>
         </div>
 
@@ -80,7 +81,7 @@ export function DashboardPage() {
 
             <div className="flex flex-col gap-2">
 
-              <p className="text-base font-normal text-stroke">Tổng đơn hàng</p>
+              <p className="text-base font-normal text-stroke">Tổng số lượt đánh giá Model</p>
 
               <p className="text-[28px] font-bold">50.000</p>
             </div>
@@ -97,7 +98,7 @@ export function DashboardPage() {
 
             <p className="text-base font-normal text-uptrend">8.5%</p>
 
-            <p className="text-base font-normal text-uptrendText">Up from yesterday</p>
+            <p className="text-base font-normal text-uptrendText">so với hôm qua</p>
           </div>
         </div>
 
@@ -108,7 +109,7 @@ export function DashboardPage() {
 
             <div className="flex flex-col gap-2">
 
-              <p className="text-base font-normal text-stroke">Tổng doanh thu</p>
+              <p className="text-base font-normal text-stroke">Tổng số thành viên mới</p>
 
               <p className="text-[28px] font-bold">3.000</p>
             </div>
@@ -125,7 +126,7 @@ export function DashboardPage() {
 
             <p className="text-base font-normal text-uptrend">8.5%</p>
 
-            <p className="text-base font-normal text-uptrendText">Up from yesterday</p>
+            <p className="text-base font-normal text-uptrendText">so với hôm qua</p>
           </div>
         </div>
 
@@ -136,7 +137,7 @@ export function DashboardPage() {
 
             <div className="flex flex-col gap-2">
 
-              <p className="text-base font-normal text-stroke">Tổng đơn hàng đang nợ</p>
+              <p className="text-base font-normal text-stroke">Tổng số người nâng cấp VIP</p>
 
               <p className="text-[28px] font-bold">0</p>
             </div>
@@ -153,38 +154,39 @@ export function DashboardPage() {
 
             <p className="text-base font-normal text-uptrend">8.5%</p>
 
-            <p className="text-base font-normal text-uptrendText">Up from yesterday</p>
+            <p className="text-base font-normal text-uptrendText">so với hôm qua</p>
           </div>
         </div>
-      </div> */}
+      </div>
 
-      {/* <div className="w-full p-3 flex flex-col gap-5 bg-white rounded-[14px] shadow-sm">
+      <div className="w-full p-3 flex flex-col gap-5 bg-white rounded-[14px] shadow-sm">
 
         <div className="flex items-center justify-between">
 
-          <p className="text-2xl font-bold">Chi tiết doanh thu</p>
+          <p className="text-2xl font-bold">Tổng số sao đánh giá App</p>
 
           <ButtonCalendar />
 
         </div>
 
 
-        <AreaChart />
+        <ColumnStarChart />
       </div>
+
 
 
       <div className="w-full h-auto p-3 flex flex-col gap-5 bg-white rounded-[14px] shadow-sm">
 
         <div className="flex items-center justify-between">
 
-          <p className="text-2xl font-bold">Chi tiết hóa đơn</p>
+          <p className="text-2xl font-bold">Chi tiết người đánh giá App</p>
 
           <ButtonCalendar />
         </div>
 
         <DefaultTable thead={overviewTable.thead} tbody={overviewTable.tbody} />
 
-      </div> */}
+      </div>
 
       <div className="py-2.5"></div>
 

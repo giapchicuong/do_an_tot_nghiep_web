@@ -10,6 +10,7 @@ import ProtectRouter from "./ProtectRouter";
 import RedirectIfAuth from "./RedirectIfAuth";
 import RatingLevelsPage from "../pages/ratingLevelsPage";
 import UserStatusLevelsPage from "../pages/userStatusLevelsPage";
+import AnalystPage from "../pages/analystPage/analystPage";
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,10 @@ const router = createBrowserRouter([
                 <App />
             </ProtectRouter>,
         children: [
-
+            {
+                path: 'analyst',
+                element: <AnalystPage />
+            },
             {
                 path: 'users',
                 element: <UsersPage />
