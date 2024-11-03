@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { useSelector } from 'react-redux';
 
 export default function ColumnStarChart() {
+    const { listDataTotalStar } = useSelector(state => state.dashboard);
 
+    // Giá trị mặc định ban đầu
     const defaultValue = {
         series: [{
-            data: [10, 20, 30, 40, 50]
+            data: []
         }],
         options: {
             chart: {
@@ -22,7 +25,7 @@ export default function ColumnStarChart() {
                 enabled: false
             },
             xaxis: {
-                categories: ['1 sao', '2 sao', '3 sao', '4 sao', '5 sao']
+                categories: []
             },
             tooltip: {
                 enabled: false
@@ -32,11 +35,25 @@ export default function ColumnStarChart() {
 
     const [valueChart, setValueChart] = useState(defaultValue);
 
+    useEffect(() => {
+        if (listDataTotalStar?.value?.length && listDataTotalStar?.column?.length) {
+            setValueChart({
+                series: [{
+                    data: listDataTotalStar.value
+                }],
+                options: {
+                    ...defaultValue.options,
+                    xaxis: {
+                        categories: listDataTotalStar.column
+                    }
+                }
+            });
+        }
+    }, [listDataTotalStar]);
+
     return (
-        <>
-            <div id="chart">
-                <ReactApexChart options={valueChart.options} series={valueChart.series} type="bar" height={450} />
-            </div>
-        </>
+        <div id="chart">
+            <ReactApexChart options={valueChart.options} series={valueChart.series} type="bar" height={450} />
+        </div>
     );
 }
