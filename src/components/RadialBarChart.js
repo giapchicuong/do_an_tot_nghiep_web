@@ -5,7 +5,7 @@ export default function RadialBarChart() {
 
     const defaultValue = {
 
-        series: [44, 55, 67, 83],
+        series: [5, 5, 20, 30, 40],
         options: {
             chart: {
                 height: 350,
@@ -28,7 +28,7 @@ export default function RadialBarChart() {
                     }
                 }
             },
-            labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
+            labels: ['1 sao', '2 sao', '3 sao', '4 sao', '5 sao'],
         },
 
     }

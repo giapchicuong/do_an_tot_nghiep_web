@@ -4,163 +4,61 @@ import ReactApexChart from 'react-apexcharts';
 export default function ColumnChart() {
 
     const defaultValue = {
+
         series: [
             {
-                name: 'Chỉ số lượt xem kênh',
-                color: '#00B69B',
-                data: [31, 40, 28, 51, 42, 109, 100],
+                name: 'Nhanh',
+                data: [44, 55, 57, 56, 61, 58, 63,]
+            }, {
+                name: 'Chính xác',
+                data: [76, 85, 101, 98, 87, 105, 91,]
+            }, {
+                name: 'Tiện lợi',
+                data: [35, 41, 36, 26, 45, 48, 52,]
             },
             {
-                name: 'Chỉ số lượt xem kênh',
-                data: [11, 32, 45, 32, 34, 52, 41],
-                color: '#4880FF',
-            }],
-        options: {
-            responsive: [{
-                breakpoint: 767,
-                options: {
-                    title: {
-                        style: {
-                            fontSize: '14px',
-                        }
-                    },
-                    yaxis: [
-                        {
-                            title: {
-                                text: 'Lượt xem',
-                                style: {
-                                    color: '#202224',
-                                    fontSize: '10px',
-                                    fontWeight: '400',
-                                }
-                            },
-                            labels: {
-                                offsetX: -25,
-                                style: {
-                                    colors: '#202224',
-                                    fontSize: '10px',
-                                    fontWeight: '300',
-                                }
-                            },
-                        },
-                        {
-                            opposite: true,
-                            title: {
-                                rotate: 90,
-                                offsetX: 10,
-                                text: 'Lượt yêu thích',
-                                style: {
-                                    color: '#202224',
-                                    fontSize: '10px',
-                                    fontWeight: '400',
-                                }
-                            },
-                            labels: {
-                                offsetX: -10,
-                                style: {
-                                    colors: '#202224',
-                                    fontSize: '10px',
-                                    fontWeight: '300',
-                                }
-                            },
-                        },
-                    ],
-                },
-            }],
-            chart: {
-                fontFamily: 'Roboto, sans-serif',
-                height: '100%',
-                toolbar: {
-                    show: false,
-                },
-                zoom: {
-                    enabled: false
-                },
+                name: 'Chậm',
+                data: [44, 55, 57, 56, 61, 58, 63,]
+            }, {
+                name: 'Không chính xác',
+                data: [76, 85, 101, 98, 87, 105, 91,]
+            }, {
+                name: 'Bất tiện',
+                data: [35, 41, 36, 26, 45, 48, 52,]
             },
-            grid: {
-                padding: {
-                    left: -10,
-                    right: -0,
+        ],
+        options: {
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
                 },
-                borderColor: "rgba(165, 165, 165, 0.12)",
             },
             dataLabels: {
                 enabled: false
             },
-            legend: {
-                show: false
-            },
-            title: {
-                margin: 0,
-                offsetX: -10,
-                text: 'Doanh thu',
-                style: {
-                    color: '#202224',
-                    fontSize: '16px',
-                    fontWeight: '700',
-                }
-            },
             stroke: {
+                show: true,
                 width: 2,
-                curve: 'smooth'
+                colors: ['transparent']
             },
-            yaxis: [
-                {
-                    title: {
-                        text: 'Doanh số',
-                        style: {
-                            color: '#202224',
-                            fontSize: '12px',
-                            fontWeight: '400',
-                        }
-                    },
-                    labels: {
-                        offsetX: -25,
-                        style: {
-                            colors: '#202224',
-                            fontSize: '10px',
-                            fontWeight: '300',
-                        }
-                    },
-                },
-                {
-                    opposite: true,
-                    title: {
-                        rotate: 90,
-                        offsetX: 10,
-                        text: 'Lượt bán',
-                        style: {
-                            color: '#202224',
-                            fontSize: '12px',
-                            fontWeight: '400',
-                        }
-                    },
-                    labels: {
-                        offsetX: -10,
-                        style: {
-                            colors: '#202224',
-                            fontSize: '10px',
-                            fontWeight: '300',
-                        }
-                    },
-                },
-            ],
             xaxis: {
-                labels: {
-                    style: {
-                        colors: '#202224',
-                        fontSize: '10px',
-                        fontWeight: '300',
-                    }
-                },
-                axisBorder: {
-                    show: true,
-                    height: 2,
-                    color: "rgba(165, 165, 165, 0.12)"
-                },
-                categories: ["18/9", "20/9", "21/9", "22/9", "23/9", "24/9", "25/9"]
+                categories: ['1/11', '2/11', '3/11', '4/11', '5/11', '6/11', '7/11'],
             },
+            yaxis: {
+
+            },
+            fill: {
+                opacity: 1
+            },
+
         },
+
 
     };
 
@@ -169,7 +67,7 @@ export default function ColumnChart() {
     return (
         <>
             <div id="chart">
-                <ReactApexChart options={valueChart.options} series={valueChart.series} type="bar" height={450} />
+                <ReactApexChart options={valueChart.options} series={valueChart.series} type="bar" height={350} />
             </div>
         </>
     );

@@ -4,7 +4,7 @@ import ReactApexChart from 'react-apexcharts';
 export default function DonutChart() {
 
     const defaultValue = {
-        series: [44, 55, 41, 17, 15],
+        series: [44, 55, 41, 17, 15, 30],
         options: {
             chart: {
                 width: 380,
@@ -19,10 +19,11 @@ export default function DonutChart() {
             dataLabels: {
                 enabled: false
             },
+            colors: ['#fb9999', '#90802c', '#13a0d4', '#4129c0', '#c441e9', '#36f724'],
             fill: {
                 type: 'gradient',
             },
-
+            labels: ['Nhanh', 'Chính xác', 'Tiện lợi', 'Chậm', 'Không chính xác', 'Bất tiện'],
 
             responsive: [{
                 breakpoint: 480,

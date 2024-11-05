@@ -15,20 +15,33 @@ export default function AnalystPage() {
 
                 <div className="flex items-center justify-between">
 
-                    <p className="text-2xl font-bold">Tổng hóa đơn</p>
+                    <p className="text-2xl font-bold">Tổng số loại nhãn trong 7 ngày gần nhất</p>
 
-                    <ButtonCalendar />
+                    {/* <ButtonCalendar /> */}
 
                 </div>
 
                 <ColumnChart />
             </div>
 
+            <div className="w-full p-3 flex flex-col gap-5 bg-white rounded-[14px] shadow-sm">
+
+                <div className="flex items-center justify-between">
+
+                    <p className="text-2xl font-bold">Tổng số lượt đánh giá sao trong 7 ngày gần nhất</p>
+
+                    {/* <ButtonCalendar /> */}
+
+                </div>
+
+                <RadarChart />
+            </div>
+
             <div className="grid grid-cols-3 gap-10">
 
                 <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">
 
-                    <div className="text-[22px] font-bold ">Khách hàng</div>
+                    <div className="text-[22px] font-bold ">Tổng số đánh giá của từng loại nhãn trong tháng 11</div>
 
                     <DonutChart />
                 </div>
@@ -42,7 +55,7 @@ export default function AnalystPage() {
 
                 <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">
 
-                    <div className="text-[22px] font-bold ">Phân tích bán hàng</div>
+                    <div className="text-[22px] font-bold ">Tổng số sao đánh giá theo phần trăm trong tháng 11</div>
 
                     <RadialBarChart />
                 </div>
