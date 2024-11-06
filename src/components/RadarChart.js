@@ -5,50 +5,67 @@ export default function RadarChart() {
 
     const defaultValue = {
 
-        series: [
-            {
-                name: '1 sao',
-                data: [10, 20, 55, 40, 80, 10, 20]
-            },
-            {
-                name: '2 sao',
-                data: [11, 32, 45, 32, 34, 52, 41]
-            },
-            {
-                name: '3 sao',
-                data: [20, 25, 30, 44, 10, 42, 14]
-            },
-            {
-                name: '4 sao',
-                data: [22, 53, 23, 82, 85, 80, 100]
-            },
-            {
-                name: '5 sao',
-                data: [22, 10, 63, 43, 77, 44, 22]
-            },
-        ],
+        series: [{
+            data: [84, 8.4, 3.0, 1.9, 2.5]
+        }],
         options: {
             chart: {
-                height: 350,
-                type: 'line'
+                type: 'bar',
+                height: 380
             },
+            plotOptions: {
+                bar: {
+                    barHeight: '100%',
+                    distributed: true,
+                    horizontal: true,
+                    dataLabels: {
+                        position: 'bottom'
+                    },
+                }
+            },
+            colors: ['#4880FF', '#91e19b', '#8dc572', '#623ce7', '#f27474'],
             dataLabels: {
-                enabled: false
+                enabled: true,
+                textAnchor: 'start',
+                style: {
+                    colors: ['#1d1c1b']
+                },
+                formatter: function (val, opt) {
+                    return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val + '%'
+                },
+                offsetX: 0,
+                dropShadow: {
+                    enabled: true
+                }
             },
             stroke: {
-                curve: 'smooth'
+                width: 1,
+                colors: ['#fff']
             },
             xaxis: {
-                type: 'string',
-                categories: ["1/11", "2/11", "3/11", "4/11", "5/11", "6/11", "7/11",]
-            },
-            tooltip: {
-                x: {
-                    format: 'dd/MM/yy HH:mm'
-                },
-            },
-        },
+                categories: ['5 sao', '4 sao', '3 sao', '2 sao', '1 sao',]
 
+            },
+            yaxis: {
+                labels: {
+                    show: false
+                }
+            },
+
+            tooltip: {
+                theme: 'dark',
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function () {
+                            return ''
+                        }
+                    }
+                }
+            }
+        },
 
 
     };
@@ -58,7 +75,7 @@ export default function RadarChart() {
 
     return (
         <>
-            <ReactApexChart options={valueChart.options} series={valueChart.series} type="line" height={350} />
+            <ReactApexChart options={valueChart.options} series={valueChart.series} type="bar" height={380} />
         </>
     )
 }

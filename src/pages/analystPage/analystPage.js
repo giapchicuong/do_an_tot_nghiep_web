@@ -11,51 +11,40 @@ export default function AnalystPage() {
 
             <h1 className="text-[32px] font-semibold">Báo cáo</h1>
 
-            <div className="w-full p-3 flex flex-col gap-5 bg-white rounded-[14px] shadow-sm">
-
-                <div className="flex items-center justify-between">
-
-                    <p className="text-2xl font-bold">Tổng số loại nhãn trong 7 ngày gần nhất</p>
-
-                    {/* <ButtonCalendar /> */}
-
-                </div>
-
-                <ColumnChart />
-            </div>
 
             <div className="w-full p-3 flex flex-col gap-5 bg-white rounded-[14px] shadow-sm">
 
                 <div className="flex items-center justify-between">
 
-                    <p className="text-2xl font-bold">Tổng số lượt đánh giá sao trong 7 ngày gần nhất</p>
+                    <p className="text-2xl font-bold">Trung bình số sao và tổng từng loại nhãn của 7 ngày gần nhất trong tháng 11</p>
 
                     {/* <ButtonCalendar /> */}
 
                 </div>
 
-                <RadarChart />
+                <RadialBarChart />
             </div>
+
 
             <div className="grid grid-cols-3 gap-10">
 
                 <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">
 
-                    <div className="text-[22px] font-bold ">Tổng số đánh giá của từng loại nhãn trong tháng 11</div>
+                    <div className="text-[22px] font-bold ">Tỷ lệ phần trăm của từng loại nhãn trong tháng 11</div>
 
                     <DonutChart />
                 </div>
 
                 <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">
 
-                    <div className="text-[22px] font-bold ">Hóa đơn</div>
+                    <div className="text-[22px] font-bold ">Tỷ lệ phần trăm của từng số sao trong tháng 11</div>
 
                     <RadarChart />
                 </div>
 
                 <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">
 
-                    <div className="text-[22px] font-bold ">Tổng số sao đánh giá theo phần trăm trong tháng 11</div>
+                    <div className="text-[22px] font-bold ">Tổng số sao đánh giá và nhãn tương ứng trong tháng 11</div>
 
                     <RadialBarChart />
                 </div>
