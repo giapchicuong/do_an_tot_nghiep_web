@@ -57,6 +57,7 @@ export function DashboardPage() {
     dispatch(getListButton())
     dispatch(getTotalStar())
     dispatch(getListReviewOptions())
+
   }, [dispatch]);
 
   return (

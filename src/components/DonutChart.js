@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactApexChart from 'react-apexcharts';
+import { useSelector } from 'react-redux';
 
 export default function DonutChart() {
 
+    const { listDataPercentageOption } = useSelector(state => state.dashboard);
+
     const defaultValue = {
 
-        series: [15, 20, 32, 10, 13, 10],
+        series: [],
         options: {
             chart: {
                 width: 380,
                 type: 'pie',
             },
-            labels: ['Nhanh', 'Chính xác', 'Tiện lợi', 'Chậm', 'Không chính xác', 'Bất tiện'],
+            labels: [],
             responsive: [{
                 breakpoint: 480,
                 options: {
@@ -28,6 +31,21 @@ export default function DonutChart() {
 
     };
     const [valueChart, setValueChart] = useState(defaultValue)
+
+
+    useEffect(() => {
+        if (listDataPercentageOption[2]?.optionPercentage && listDataPercentageOption[0]?.reviewOptionName) {
+            setValueChart({
+                series: listDataPercentageOption[2].optionPercentage.map((e) => parseInt(e)),
+                options: {
+                    ...defaultValue.options,
+                    labels: listDataPercentageOption[0].reviewOptionName,
+
+                }
+            });
+        }
+
+    }, [listDataPercentageOption]);
 
     return (
         <div>

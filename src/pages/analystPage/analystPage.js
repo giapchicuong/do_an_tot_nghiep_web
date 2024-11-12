@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ButtonCalendar from '../../components/ButtonCalendar'
 import DonutChart from '../../components/DonutChart'
 import RadarChart from '../../components/RadarChart'
 import RadialBarChart from '../../components/RadialBarChart'
 import ColumnChart from '../../sections/analystPage/ColumnChart'
+import { useDispatch } from 'react-redux'
+import { getAvgAndNumberOption, getPercentageOption, getPercentageStar } from '../../redux/actions/dashboard.action'
 
 export default function AnalystPage() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+
+        dispatch(getPercentageStar({ year: 2024, month: 11 }))
+        dispatch(getPercentageOption({ year: 2024, month: 11 }))
+        dispatch(getAvgAndNumberOption())
+    }, [dispatch]);
+
     return (
         <main className='w-full h-fit flex flex-col gap-5'>
 
@@ -46,7 +57,7 @@ export default function AnalystPage() {
 
                     <div className="text-[22px] font-bold ">Tổng số sao đánh giá và nhãn tương ứng trong tháng 11</div>
 
-                    <RadialBarChart />
+                    {/* <RadialBarChart /> */}
                 </div>
             </div>
 

@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactApexChart from 'react-apexcharts';
-
+import { useSelector } from 'react-redux';
 export default function RadarChart() {
 
-    const defaultValue = {
+    const { listDataPercentageStar } = useSelector(state => state.dashboard);
 
+    const defaultValue = {
         series: [{
-            data: [84, 8.4, 3.0, 1.9, 2.5]
+            data: []
         }],
         options: {
             chart: {
@@ -31,7 +32,7 @@ export default function RadarChart() {
                     colors: ['#1d1c1b']
                 },
                 formatter: function (val, opt) {
-                    return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val + '%'
+                    return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val + '%';
                 },
                 offsetX: 0,
                 dropShadow: {
@@ -43,35 +44,58 @@ export default function RadarChart() {
                 colors: ['#fff']
             },
             xaxis: {
-                categories: ['5 sao', '4 sao', '3 sao', '2 sao', '1 sao',]
-
+                categories: []
             },
             yaxis: {
                 labels: {
                     show: false
                 }
             },
-
             tooltip: {
                 theme: 'dark',
                 x: {
-                    show: false
-                },
-                y: {
+                    show: false,
                     title: {
                         formatter: function () {
-                            return ''
+                            return '';
+                        }
+                    }
+                },
+                y: {
+                    formatter: function (val) {
+                        return val + '%';
+                    },
+                    title: {
+                        formatter: function () {
+                            return '';
                         }
                     }
                 }
             }
-        },
-
-
+        }
     };
 
 
     const [valueChart, setValueChart] = useState(defaultValue)
+
+
+    useEffect(() => {
+        if (listDataPercentageStar[2]?.ratingPercentage && listDataPercentageStar[0]?.numberStar) {
+            setValueChart({
+                series: [{
+                    data: listDataPercentageStar[2].ratingPercentage
+                }],
+                options: {
+                    ...defaultValue.options,
+                    xaxis: {
+                        categories: listDataPercentageStar[0].numberStar
+                    }
+                }
+            });
+        }
+
+    }, [listDataPercentageStar]);
+
 
     return (
         <>
