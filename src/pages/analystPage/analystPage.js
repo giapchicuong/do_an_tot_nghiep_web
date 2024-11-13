@@ -33,7 +33,7 @@ export default function AnalystPage() {
 
                 </div>
 
-                <RadialBarChart />
+                {/* <RadialBarChart /> */}
             </div>
 
 
