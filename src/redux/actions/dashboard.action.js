@@ -52,7 +52,7 @@ export const getPercentageOption = createAsyncThunk('dashboard/getPercentageOpti
 export const getAvgAndNumberOption = createAsyncThunk('dashboard/getAvgAndNumberOption',
 
     async (data) => {
-        const response = await post('/dashboard/getAvgAndNumberOption', data)
+        const response = await post('/dashboard/getAvgStarAndTotalOptionByDate', data)
 
         return response
     }
