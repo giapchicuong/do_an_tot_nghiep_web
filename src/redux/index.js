@@ -6,6 +6,7 @@ import roleReducer from './reduces/role.reducer'
 import ratingLevelReducer from './reduces/ratingLevel.reducer'
 import userStatusLevelReducer from './reduces/userStatusLevel.reducer'
 import dashboardReducer from './reduces/dashboard.reducer'
+import versionReducer from './reduces/version.reducer'
 import { thunk } from "redux-thunk";
 
 export const store = configureStore({
@@ -17,6 +18,7 @@ export const store = configureStore({
         ratingLevels: ratingLevelReducer,
         userStatusLevels: userStatusLevelReducer,
         dashboard: dashboardReducer,
+        versions: versionReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk)
 })

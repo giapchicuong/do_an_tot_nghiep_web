@@ -1,10 +1,11 @@
 import React from 'react';
 import DefaultNavbar from './DefaultNavbar';
-import { AiOutlineApartment, AiOutlineDashboard } from 'react-icons/ai';
-import { FaRegUser } from 'react-icons/fa';
+import { AiOutlineDashboard } from 'react-icons/ai';
 import { HiOutlineUsers } from 'react-icons/hi2';
 import { GrAnalytics } from 'react-icons/gr';
 import { useLocation } from 'react-router-dom';
+import { GoVersions } from "react-icons/go";
+
 export default function SideBar() {
     const location = useLocation();
 
@@ -15,9 +16,7 @@ export default function SideBar() {
         { title: 'Báo cáo', linkTo: 'analyst', icon: <GrAnalytics className='text-xl' /> },
         { title: 'Người dùng', linkTo: 'users', icon: <HiOutlineUsers className='text-xl' /> },
         { title: 'Thành viên', linkTo: 'user-status-levels', icon: <HiOutlineUsers className='text-xl' /> },
-        { title: 'Vai trò', linkTo: 'groups', icon: <FaRegUser className='text-xl' /> },
-        { title: 'Nhóm quyền', linkTo: 'roles', icon: <AiOutlineApartment className='text-xl' /> },
-        { title: 'Hạng đánh giá', linkTo: 'rating-levels', icon: <AiOutlineApartment className='text-xl' /> },
+        { title: 'Phiên bản', linkTo: 'versions', icon: <GoVersions className='text-xl' /> },
     ];
 
     return (

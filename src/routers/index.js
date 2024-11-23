@@ -11,6 +11,7 @@ import RedirectIfAuth from "./RedirectIfAuth";
 import RatingLevelsPage from "../pages/ratingLevelsPage";
 import UserStatusLevelsPage from "../pages/userStatusLevelsPage";
 import AnalystPage from "../pages/analystPage/analystPage";
+import VersionPage from "../pages/versionPage/versionPage";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
             {
                 path: 'rating-levels',
                 element: <RatingLevelsPage />
+            },
+            {
+                path: 'versions',
+                element: <VersionPage />
             },
         ]
     },

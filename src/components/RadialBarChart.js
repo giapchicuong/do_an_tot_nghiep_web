@@ -4,100 +4,83 @@ import { useSelector } from 'react-redux';
 import LoadingPage from './LoadingPage';
 
 export default function RadialBarChart() {
-    const { listDataAvgNumberStar, isLoading } = useSelector(state => state.dashboard);
+    const { listDataAvgNumberStar, isLoading } = useSelector((state) => state.dashboard);
+
+    // const defaultValue = {
+    //     series: [],
+    //     options: {
+    //         chart: {
+    //             height: 350,
+    //             type: 'line',
+    //             zoom: { enabled: false },
+    //         },
+    //         dataLabels: { enabled: false },
+    //         stroke: { curve: 'straight' },
+    //         yaxis: [
+    //             {
+    //                 min: 0, // Giá trị thấp nhất
+    //                 max: 5, // Giá trị cao nhất
+    //                 tickAmount: 5, // Tổng số khoảng
+    //                 title: {
+    //                     text: 'Trung bình số sao',
+    //                     style: {
+    //                         fontSize: '15px',
+    //                         fontWeight: 'bold',
+    //                     },
+    //                 },
+    //                 labels: {
+    //                     formatter: (val) => `${val}`,
+    //                 },
+    //             },
+    //             {
+    //                 opposite: true,
+    //                 title: {
+    //                     text: 'Tổng số nhãn cho từng loại',
+    //                     style: {
+    //                         fontSize: '15px',
+    //                         fontWeight: 'bold',
+    //                     },
+    //                 },
+    //                 labels: {
+    //                     formatter: (val) => `${val}`,
+    //                 },
+    //             },
+    //         ],
+    //         grid: {
+    //             row: {
+    //                 colors: ['#f3f3f3', 'transparent'],
+    //                 opacity: 0.5,
+    //             },
+    //         },
+    //         xaxis: {
+    //             categories: [],
+    //         },
+    //     },
+    // };
+
 
     const defaultValue = {
-        series: [
-            {
-                name: "Trung bình số sao",
-                type: 'line',
-                data: []
-            },
-            {
-                name: "Chính xác",
-                type: 'bar',
-                data: []
-            },
-            {
-                name: "Nhanh",
-                type: 'bar',
-                data: []
-            },
-            {
-                name: "Tiện lợi",
-                type: 'bar',
-                data: []
-            },
-            {
-                name: "Chậm",
-                type: 'bar',
-                data: []
-            },
-            {
-                name: "Không chính xác",
-                type: 'bar',
-                data: []
-            },
-            {
-                name: "Bất tiện",
-                type: 'bar',
-                data: []
-            },
-        ],
+        series: [],
         options: {
-            chart: {
-                height: 350,
-                type: 'line',
-                zoom: {
-                    enabled: false
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                curve: 'straight'
-            },
+            chart: { height: 350, type: 'line', zoom: { enabled: false } },
+            dataLabels: { enabled: false },
+            stroke: { curve: 'straight' },
             yaxis: [
                 {
-
-                    min: 1, // Giá trị thấp nhất
-                    max: 5, // Giá trị cao nhất
-                    tickAmount: 4, // Tổng số khoảng
-                    title: {
-                        text: 'Trung bình số sao',
-                        style: {
-                            fontSize: '15px', // Adjust the font size here
-                            fontWeight: 'bold', // Optional: set font weight
-                        }
-                    },
-                    labels: {
-                        formatter: (val) => `${val}`, // Định dạng nhãn
-                    }
+                    min: 0,
+                    max: 5,
+                    tickAmount: 5,
+                    title: { text: 'Trung bình số sao', style: { fontSize: '15px', fontWeight: 'bold' } },
+                    labels: { formatter: (val) => `${val}` },
                 },
                 {
                     opposite: true,
-                    title: {
-                        text: 'Tổng số nhãn cho từng loại',
-                        style: {
-                            fontSize: '15px', // Adjust the font size here
-                            fontWeight: 'bold', // Optional: set font weight
-                        }
-                    },
-                    labels: {
-                        formatter: (val) => `${val}`, // Định dạng nhãn
-                    }
-                }
-            ],
-            grid: {
-                row: {
-                    colors: ['#f3f3f3', 'transparent'],
-                    opacity: 0.5
+                    title: { text: 'Tổng số nhãn cho từng loại', style: { fontSize: '15px', fontWeight: 'bold' } },
+                    labels: { formatter: (val) => `${val}` },
                 },
-            },
-            xaxis: {
-                categories: [],
-            }
+            ],
+            grid: { row: { colors: ['#f3f3f3', 'transparent'], opacity: 0.5 } },
+            xaxis: { categories: [] },
         },
     };
 
@@ -106,30 +89,29 @@ export default function RadialBarChart() {
     useEffect(() => {
         if (
             listDataAvgNumberStar &&
-            listDataAvgNumberStar.listDataAvgStar &&
-            listDataAvgNumberStar.result &&
-            listDataAvgNumberStar.listDayMonth
+            Array.isArray(listDataAvgNumberStar.listDataAvgStar) &&
+            Array.isArray(listDataAvgNumberStar.result) &&
+            Array.isArray(listDataAvgNumberStar.listDayMonth)
         ) {
+            const avgStars = listDataAvgNumberStar.listDataAvgStar.map((e) => parseFloat(e || 0));
+            const results = listDataAvgNumberStar.result.map((item) => ({
+                name: item.name,
+                type: 'bar',
+                data: item.data.map((e) => e || 0),
+            }));
+
             setValueChart({
                 series: [
-                    {
-                        name: "Trung bình số sao",
-                        type: 'line',
-                        data: (listDataAvgNumberStar.listDataAvgStar || []).map((e) => parseFloat(e)),
-                    },
-                    ...listDataAvgNumberStar.result.map(item => ({
-                        name: item.name,
-                        type: 'bar',
-                        data: item.data.map((e) => parseFloat(e))
-                    }))
+                    { name: 'Trung bình số sao', type: 'line', data: avgStars },
+                    ...results,
                 ],
                 options: {
                     ...defaultValue.options,
-                    xaxis: {
-                        categories: listDataAvgNumberStar.listDayMonth
-                    }
-                }
+                    xaxis: { categories: listDataAvgNumberStar.listDayMonth },
+                },
             });
+        } else {
+            console.error('Invalid data:', listDataAvgNumberStar);
         }
     }, [listDataAvgNumberStar]);
 
@@ -137,11 +119,11 @@ export default function RadialBarChart() {
     return (
         <div>
             {isLoading && <LoadingPage />}
-
-            {listDataAvgNumberStar?.listDataAvgStar?.length > 0 && (
+            {valueChart.series.length > 0 && valueChart.options.xaxis.categories.length > 0 ? (
                 <ReactApexChart options={valueChart.options} series={valueChart.series} type="line" height={350} />
+            ) : (
+                !isLoading && <p>Loading....</p>
             )}
-
         </div>
     );
 
