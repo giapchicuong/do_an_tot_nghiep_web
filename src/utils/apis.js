@@ -49,3 +49,25 @@ export const post = async (url, data) => {
         return console.log(err)
     }
 }
+
+
+export const put = async (url, data) => {
+    try {
+        const response = await instance.put(url, data)
+
+        return response
+    } catch (err) {
+        return console.log(err)
+    }
+}
+
+export const del = async (url) => {
+    try {
+        const result = await instance.delete(url)
+
+        return result.data
+    } catch (err) {
+        return console.log(err)
+    }
+}
+

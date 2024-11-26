@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { formatDayMonthYear } from '../../utils/helperFunction';
+import CheckboxInput from '../../components/CheckboxInput';
+import RadioInput from '../../components/RadioInput';
+import { useDispatch } from 'react-redux';
+import { updateVersion } from '../../redux/actions/version.action';
 
 export default function VersionTable({ data }) {
+    const dispatch = useDispatch()
+
+    const handleUpdate = (versionId) => {
+        dispatch(updateVersion({ versionId: versionId }))
+    }
+
+
     return (
         <table class="table-auto w-full h-full text-textColor">
             <thead className='bg-inputPlaceholder'>
@@ -32,7 +43,9 @@ export default function VersionTable({ data }) {
                             }
                             {
 
-                                <td className='p-5 text-base font-normal text-start whitespace-nowrap'>{item.isSelectedVersion === 0 ? 'Đang chọn' : ''}</td>
+                                <td className=' p-y-5 pl-20 text-base font-normal text-start whitespace-nowrap'>
+                                    <RadioInput checked={item.isSelectedVersion === 1} onClick={() => handleUpdate(item.versionId)} />
+                                </td>
                             }
                             {
                                 item.createdAt &&

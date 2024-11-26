@@ -4,7 +4,7 @@ import React from 'react'
 export default function DefaultPopup({ children, handleShow, width, title }) {
     return (
         <>
-            <div className='fixed inset-0 flex justify-center items-center bg-popup z-40 bg-bgBlur'></div>
+            <div className='fixed inset-0 flex justify-center items-center bg-popup z-40 bg-bgBlur' onClick={handleShow}></div>
 
             <div className='max-h-[697px] overflow-y-auto overflow-x-hidden bg-white rounded-[5px] p-[30px] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 hide-scroll'>
                 {

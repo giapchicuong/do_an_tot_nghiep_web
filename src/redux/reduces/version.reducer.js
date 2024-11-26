@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-import { getAllVersions } from "../actions/version.action"
+import { createNewVersion, getAllVersions, updateVersion } from "../actions/version.action"
 
 const initialState = {
     isLoading: false,
@@ -32,6 +32,22 @@ const userSlice = createSlice({
             if (res && res.data && res.data.EC !== 0) {
                 state.isError = true
                 toast.error(res.data.EM)
+            }
+
+        })
+        builder.addCase(createNewVersion.fulfilled, (state, action) => {
+            const res = action.payload
+
+            if (res && res.data && res.data.EC === 0) {
+                state.listData = res.data.DT
+            }
+
+        })
+        builder.addCase(updateVersion.fulfilled, (state, action) => {
+            const res = action.payload
+
+            if (res && res.data && res.data.EC === 0) {
+                state.listData = res.data.DT
             }
 
         })
