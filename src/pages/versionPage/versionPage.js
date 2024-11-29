@@ -10,7 +10,6 @@ import DefaultButton from '../../components/DefaultButton'
 import { useFormik } from 'formik'
 import { INPUT_REQUIRED } from '../../utils/error'
 import * as Yup from 'yup'
-import { Link } from 'react-router-dom'
 
 export default function VersionPage() {
     const dispatch = useDispatch()

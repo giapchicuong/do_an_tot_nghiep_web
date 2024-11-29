@@ -7,7 +7,6 @@ export default function DonutChart() {
     const { listDataPercentageOption } = useSelector(state => state.dashboard);
 
     const defaultValue = {
-
         series: [],
         options: {
             chart: {
@@ -25,22 +24,26 @@ export default function DonutChart() {
                         position: 'bottom'
                     }
                 }
-            }]
+            }],
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return val.toFixed(1) + "%";
+                    }
+                }
+            }
         },
-
-
     };
+
     const [valueChart, setValueChart] = useState(defaultValue)
 
-
     useEffect(() => {
-        if (listDataPercentageOption[2]?.optionPercentage && listDataPercentageOption[0]?.reviewOptionName) {
+        if (listDataPercentageOption) {
             setValueChart({
-                series: listDataPercentageOption[2].optionPercentage.map((e) => parseInt(e)),
+                series: listDataPercentageOption.listRating.map((e) => parseFloat(e)),
                 options: {
                     ...defaultValue.options,
-                    labels: listDataPercentageOption[0].reviewOptionName,
-
+                    labels: listDataPercentageOption.nameOption,
                 }
             });
         }
