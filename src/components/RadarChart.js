@@ -80,15 +80,15 @@ export default function RadarChart() {
 
 
     useEffect(() => {
-        if (listDataPercentageStar[2]?.ratingPercentage && listDataPercentageStar[0]?.numberStar) {
+        if (listDataPercentageStar && listDataPercentageStar.value && listDataPercentageStar.name) {
             setValueChart({
                 series: [{
-                    data: listDataPercentageStar[2].ratingPercentage
+                    data: listDataPercentageStar.value
                 }],
                 options: {
                     ...defaultValue.options,
                     xaxis: {
-                        categories: listDataPercentageStar[0].numberStar
+                        categories: listDataPercentageStar.name
                     }
                 }
             });

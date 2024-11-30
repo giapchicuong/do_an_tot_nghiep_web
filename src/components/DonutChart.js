@@ -38,7 +38,7 @@ export default function DonutChart() {
     const [valueChart, setValueChart] = useState(defaultValue)
 
     useEffect(() => {
-        if (listDataPercentageOption) {
+        if (listDataPercentageOption && Array.isArray(listDataPercentageOption.listRating)) {
             setValueChart({
                 series: listDataPercentageOption.listRating.map((e) => parseFloat(e)),
                 options: {
@@ -47,8 +47,8 @@ export default function DonutChart() {
                 }
             });
         }
-
     }, [listDataPercentageOption]);
+
 
     return (
         <div>

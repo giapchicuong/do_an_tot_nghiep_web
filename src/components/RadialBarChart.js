@@ -4,59 +4,7 @@ import { useSelector } from 'react-redux';
 import LoadingPage from './LoadingPage';
 
 export default function RadialBarChart() {
-    const { listDataAvgNumberStar, isLoading } = useSelector((state) => state.dashboard);
-
-    // const defaultValue = {
-    //     series: [],
-    //     options: {
-    //         chart: {
-    //             height: 350,
-    //             type: 'line',
-    //             zoom: { enabled: false },
-    //         },
-    //         dataLabels: { enabled: false },
-    //         stroke: { curve: 'straight' },
-    //         yaxis: [
-    //             {
-    //                 min: 0, // Giá trị thấp nhất
-    //                 max: 5, // Giá trị cao nhất
-    //                 tickAmount: 5, // Tổng số khoảng
-    //                 title: {
-    //                     text: 'Trung bình số sao',
-    //                     style: {
-    //                         fontSize: '15px',
-    //                         fontWeight: 'bold',
-    //                     },
-    //                 },
-    //                 labels: {
-    //                     formatter: (val) => `${val}`,
-    //                 },
-    //             },
-    //             {
-    //                 opposite: true,
-    //                 title: {
-    //                     text: 'Tổng số nhãn cho từng loại',
-    //                     style: {
-    //                         fontSize: '15px',
-    //                         fontWeight: 'bold',
-    //                     },
-    //                 },
-    //                 labels: {
-    //                     formatter: (val) => `${val}`,
-    //                 },
-    //             },
-    //         ],
-    //         grid: {
-    //             row: {
-    //                 colors: ['#f3f3f3', 'transparent'],
-    //                 opacity: 0.5,
-    //             },
-    //         },
-    //         xaxis: {
-    //             categories: [],
-    //         },
-    //     },
-    // };
+    const { listDataAvgNumberStar, isLoading } = useSelector((state) => state.dashboard)
 
 
     const defaultValue = {
@@ -89,15 +37,15 @@ export default function RadialBarChart() {
     useEffect(() => {
         if (
             listDataAvgNumberStar &&
-            Array.isArray(listDataAvgNumberStar.listDataAvgStar) &&
-            Array.isArray(listDataAvgNumberStar.result) &&
-            Array.isArray(listDataAvgNumberStar.listDayMonth)
+            Array.isArray(listDataAvgNumberStar.dates) &&
+            Array.isArray(listDataAvgNumberStar.listCountOption) &&
+            listDataAvgNumberStar.avgStar
         ) {
-            const avgStars = listDataAvgNumberStar.listDataAvgStar.map((e) => parseFloat(e || 0));
-            const results = listDataAvgNumberStar.result.map((item) => ({
-                name: item.name,
+            const avgStars = listDataAvgNumberStar.avgStar?.value.map((e) => parseFloat(e || 0).toFixed(2));
+            const results = listDataAvgNumberStar.listCountOption.map((item) => ({
+                name: item.nameOption,
                 type: 'bar',
-                data: item.data.map((e) => e || 0),
+                data: item.value.map((e) => e || 0),
             }));
 
             setValueChart({
@@ -107,18 +55,15 @@ export default function RadialBarChart() {
                 ],
                 options: {
                     ...defaultValue.options,
-                    xaxis: { categories: listDataAvgNumberStar.listDayMonth },
+                    xaxis: { categories: listDataAvgNumberStar.dates },
                 },
             });
-        } else {
-            console.error('Invalid data:', listDataAvgNumberStar);
         }
     }, [listDataAvgNumberStar]);
 
 
     return (
         <div>
-            {isLoading && <LoadingPage />}
             {valueChart.series.length > 0 && valueChart.options.xaxis.categories.length > 0 ? (
                 <ReactApexChart options={valueChart.options} series={valueChart.series} type="line" height={350} />
             ) : (
