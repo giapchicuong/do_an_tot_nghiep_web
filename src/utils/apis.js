@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const URL_SERVER = 'http://localhost:8080/api/v1'
+export const URL_SERVER = 'https://mako-comic-deer.ngrok-free.app/api/v1'
 
 const instance = axios.create({
     baseURL: URL_SERVER
