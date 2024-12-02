@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import ReactApexChart from 'react-apexcharts';
 import { useSelector } from 'react-redux';
 
-export default function DonutChart() {
+export default function PiePercentageOptionChart() {
 
-    const { listDataPercentageOption } = useSelector(state => state.dashboard);
+    const { listDataPercentageOption } = useSelector(state => state.analyst);
 
     const defaultValue = {
         series: [],

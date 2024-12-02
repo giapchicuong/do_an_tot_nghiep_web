@@ -20,8 +20,8 @@ const userSlice = createSlice({
         builder.addCase(getAllGroup.fulfilled, (state, action) => {
             const res = action.payload
 
-            if (res && res.data && res.data.EC === 0) {
-                state.listData = res.data.DT
+            if (res && res.EC === 0) {
+                state.listData = res.DT
             }
 
             state.isLoading = false
@@ -29,9 +29,9 @@ const userSlice = createSlice({
         builder.addCase(getAllGroup.rejected, (state, action) => {
             const res = action.payload
 
-            if (res && res.data && res.data.EC !== 0) {
+            if (res && res.EC !== 0) {
                 state.isError = true
-                toast.error(res.data.EM)
+                toast.error(res.EM)
             }
 
         })

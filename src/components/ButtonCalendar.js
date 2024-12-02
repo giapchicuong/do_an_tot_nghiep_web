@@ -8,6 +8,7 @@ const ButtonCalendar = ({
     buttonLabel = "Hôm nay",
     selectRange = false,
     viewYear = false,
+    isCanDropdown = true
 }) => {
     const [startDate, setStartDate] = useState(initialStartDate);
     const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +57,8 @@ const ButtonCalendar = ({
                 </div>
             </button>
 
-            {isOpen && (
+
+            {isOpen && isCanDropdown && (
                 <div className="absolute top-full right-0 z-0">
                     <Calendar
                         locale="en-VN"

@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { useSelector } from 'react-redux';
-import LoadingPage from './LoadingPage';
+import LoadingPage from '../../components/LoadingPage';
 
-export default function RadialBarChart() {
-    const { listDataAvgNumberStar, isLoading } = useSelector((state) => state.dashboard)
-
-
-    const defaultValue = {
+export default function LineAndColumnAvgChart() {
+    const { listDataAvgNumberStar } = useSelector((state) => state.analyst);
+    const [valueChart, setValueChart] = useState({
         series: [],
         options: {
             chart: { height: 350, type: 'line', zoom: { enabled: false } },
@@ -30,9 +28,8 @@ export default function RadialBarChart() {
             grid: { row: { colors: ['#f3f3f3', 'transparent'], opacity: 0.5 } },
             xaxis: { categories: [] },
         },
-    };
-
-    const [valueChart, setValueChart] = useState(defaultValue);
+    });
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         if (
@@ -41,6 +38,7 @@ export default function RadialBarChart() {
             Array.isArray(listDataAvgNumberStar.listCountOption) &&
             listDataAvgNumberStar.avgStar
         ) {
+            setIsLoading(true);
             const avgStars = listDataAvgNumberStar.avgStar?.value.map((e) => parseFloat(e || 0).toFixed(2));
             const results = listDataAvgNumberStar.listCountOption.map((item) => ({
                 name: item.nameOption,
@@ -54,22 +52,21 @@ export default function RadialBarChart() {
                     ...results,
                 ],
                 options: {
-                    ...defaultValue.options,
+                    ...valueChart.options,
                     xaxis: { categories: listDataAvgNumberStar.dates },
                 },
             });
+            setIsLoading(false);
         }
     }, [listDataAvgNumberStar]);
 
-
     return (
         <div>
-            {valueChart.series.length > 0 && valueChart.options.xaxis.categories.length > 0 ? (
-                <ReactApexChart options={valueChart.options} series={valueChart.series} type="line" height={350} />
+            {isLoading ? (
+                <LoadingPage />
             ) : (
-                !isLoading && <p>Loading....</p>
+                <ReactApexChart options={valueChart.options} series={valueChart.series} type="line" height={350} />
             )}
         </div>
     );
-
 }

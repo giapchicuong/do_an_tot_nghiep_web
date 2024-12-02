@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-import { getAvgAndNumberOption, getListButton, getListReviewOptions, getPercentageOption, getPercentageStar, getTotalStar } from "../actions/dashboard.action"
+import { getListButton, getListReviewOptions, getTotalStar } from "../actions/dashboard.action"
 
 const initialState = {
     isLoading: false,
@@ -8,9 +8,6 @@ const initialState = {
     listDataButton: [],
     listDataTotalStar: [],
     listDataReviewOption: [],
-    listDataPercentageStar: [],
-    listDataPercentageOption: [],
-    listDataAvgNumberStar: [],
 }
 
 const userSlice = createSlice({
@@ -25,8 +22,8 @@ const userSlice = createSlice({
         builder.addCase(getListButton.fulfilled, (state, action) => {
             const res = action.payload
 
-            if (res && res.data && res.data.EC === 0) {
-                state.listDataButton = res.data.DT
+            if (res && res.EC === 0) {
+                state.listDataButton = res.DT
             }
 
             state.isLoading = false
@@ -34,9 +31,9 @@ const userSlice = createSlice({
         builder.addCase(getListButton.rejected, (state, action) => {
             const res = action.payload
 
-            if (res && res.data && res.data.EC !== 0) {
+            if (res && res.EC !== 0) {
                 state.isError = true
-                toast.error(res.data.EM)
+                toast.error(res.EM)
             }
 
         })
@@ -46,8 +43,8 @@ const userSlice = createSlice({
         builder.addCase(getTotalStar.fulfilled, (state, action) => {
             const res = action.payload
 
-            if (res && res.data && res.data.EC === 0) {
-                state.listDataTotalStar = res.data.DT
+            if (res && res.EC === 0) {
+                state.listDataTotalStar = res.DT
             }
 
             state.isLoading = false
@@ -55,9 +52,9 @@ const userSlice = createSlice({
         builder.addCase(getTotalStar.rejected, (state, action) => {
             const res = action.payload
 
-            if (res && res.data && res.data.EC !== 0) {
+            if (res && res.EC !== 0) {
                 state.isError = true
-                toast.error(res.data.EM)
+                toast.error(res.EM)
             }
 
         })
@@ -67,8 +64,8 @@ const userSlice = createSlice({
         builder.addCase(getListReviewOptions.fulfilled, (state, action) => {
             const res = action.payload
 
-            if (res && res.data && res.data.EC === 0) {
-                state.listDataReviewOption = res.data.DT
+            if (res && res.EC === 0) {
+                state.listDataReviewOption = res.DT
             }
 
             state.isLoading = false
@@ -76,72 +73,9 @@ const userSlice = createSlice({
         builder.addCase(getListReviewOptions.rejected, (state, action) => {
             const res = action.payload
 
-            if (res && res.data && res.data.EC !== 0) {
+            if (res && res.EC !== 0) {
                 state.isError = true
-                toast.error(res.data.EM)
-            }
-
-        })
-        builder.addCase(getPercentageStar.pending, (state, action) => {
-            state.isLoading = true
-        })
-        builder.addCase(getPercentageStar.fulfilled, (state, action) => {
-            const res = action.payload
-
-            if (res && res.data && res.data.EC === 0) {
-                state.listDataPercentageStar = res.data.DT
-            }
-
-            state.isLoading = false
-        })
-        builder.addCase(getPercentageStar.rejected, (state, action) => {
-            const res = action.payload
-
-            if (res && res.data && res.data.EC !== 0) {
-                state.isError = true
-                toast.error(res.data.EM)
-            }
-
-        })
-        builder.addCase(getPercentageOption.pending, (state, action) => {
-            state.isLoading = true
-        })
-        builder.addCase(getPercentageOption.fulfilled, (state, action) => {
-            const res = action.payload
-
-            if (res && res.data && res.data.EC === 0) {
-                state.listDataPercentageOption = res.data.DT
-            }
-
-            state.isLoading = false
-        })
-        builder.addCase(getPercentageOption.rejected, (state, action) => {
-            const res = action.payload
-
-            if (res && res.data && res.data.EC !== 0) {
-                state.isError = true
-                toast.error(res.data.EM)
-            }
-
-        })
-        builder.addCase(getAvgAndNumberOption.pending, (state, action) => {
-            state.isLoading = true
-        })
-        builder.addCase(getAvgAndNumberOption.fulfilled, (state, action) => {
-            const res = action.payload
-
-            if (res && res.data && res.data.EC === 0) {
-                state.listDataAvgNumberStar = res.data.DT
-            }
-
-            state.isLoading = false
-        })
-        builder.addCase(getAvgAndNumberOption.rejected, (state, action) => {
-            const res = action.payload
-
-            if (res && res.data && res.data.EC !== 0) {
-                state.isError = true
-                toast.error(res.data.EM)
+                toast.error(res.EM)
             }
 
         })

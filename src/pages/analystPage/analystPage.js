@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import DonutChart from '../../components/DonutChart';
-import RadarChart from '../../components/RadarChart';
-import RadialBarChart from '../../components/RadialBarChart';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAvgAndNumberOption, getPercentageOption, getPercentageStar } from '../../redux/actions/dashboard.action';
 import LoadingPage from '../../components/LoadingPage';
 import { getAllVersions } from '../../redux/actions/version.action';
 import DropdownVersion from '../../sections/analystPage/DropdownVesion';
 import ButtonCalendar from '../../components/ButtonCalendar';
-import { convertDate, convertMonthYear, convertMultiDate, getDatesInRange } from '../../utils/helperFunction';
+import { convertDate, convertMonthYear, getDatesInRange } from '../../utils/helperFunction';
+import PiePercentageOptionChart from '../../sections/analystPage/PiePercentageOptionChart';
+import PiePercentageStarChart from '../../sections/analystPage/PiePercentageStarChart';
+import LineAndColumnAvgChart from '../../sections/analystPage/LineAndColumnAvgChart';
+import { getAvgAndNumberOption, getPercentageOption, getPercentageStar } from '../../redux/actions/analyst.action';
 
 export default function AnalystPage() {
-    const { isLoading } = useSelector(state => state.dashboard);
+    const { isLoadingPercentageStar, isLoadingPercentageOption, isLoadingAvgNumberStar } = useSelector(state => state.analyst);
     const { listData } = useSelector(state => state.versions);
 
     const [version, setVersion] = useState(null);
     const [dateAvgChart, setDateAvgChart] = useState([]);
-    const [dateOptionMonth, setDateOptionMonth] = useState({ month: new Date().getMonth() + 1 });
-    const [dateStarMonth, setDateStarMonth] = useState({ month: new Date().getMonth() + 1 });
+    const [dateOptionMonth, setDateOptionMonth] = useState();
+    const [dateStarMonth, setDateStarMonth] = useState();
 
     const dispatch = useDispatch();
 
@@ -111,7 +111,7 @@ export default function AnalystPage() {
 
     return (
         <>
-            {/* {isLoading && <LoadingPage />} */}
+            {isLoadingPercentageStar && isLoadingPercentageOption && isLoadingAvgNumberStar && <LoadingPage />}
 
             <main className='w-full h-fit flex flex-col gap-5'>
                 <div className="flex justify-between">
@@ -133,7 +133,7 @@ export default function AnalystPage() {
                             selectRange
                         />
                     </div>
-                    <RadialBarChart />
+                    <LineAndColumnAvgChart />
                 </div>
 
                 <div className="grid grid-cols-3 gap-10">
@@ -141,24 +141,24 @@ export default function AnalystPage() {
                         <div className="flex items-center justify-between">
                             <div className="text-[22px] font-bold">Tỷ lệ phần trăm của từng loại nhãn</div>
                             <ButtonCalendar
-                                buttonLabel={`Tháng ${dateOptionMonth.month}`}
+                                buttonLabel={`Tháng ${dateOptionMonth?.month ?? ''}`}
                                 onDateChange={handleChangeDateOption}
                                 viewYear={true}
                             />
                         </div>
-                        <DonutChart />
+                        <PiePercentageOptionChart />
                     </div>
 
                     <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">
                         <div className="flex items-center justify-between">
                             <div className="text-[22px] font-bold">Tỷ lệ phần trăm của từng số sao</div>
                             <ButtonCalendar
-                                buttonLabel={`Tháng ${dateStarMonth.month}`}
+                                buttonLabel={`Tháng ${dateStarMonth?.month ?? ''}`}
                                 onDateChange={handleChangeDateStar}
                                 viewYear={true}
                             />
                         </div>
-                        <RadarChart />
+                        <PiePercentageStarChart />
                     </div>
 
                     {/* <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">

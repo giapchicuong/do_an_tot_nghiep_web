@@ -3,7 +3,7 @@ import { formatDayMonthYear } from '../../utils/helperFunction';
 
 export default function DashboardTable({ data }) {
     return (
-        <table class="table-auto w-full h-full text-textColor">
+        <table className="table-auto w-full h-full text-textColor">
             <thead className='bg-inputPlaceholder'>
                 <tr>
                     <th className='p-5 text-base font-bold text-start whitespace-nowrap first:rounded-l-xl last:rounded-r-xl'>ID</th>

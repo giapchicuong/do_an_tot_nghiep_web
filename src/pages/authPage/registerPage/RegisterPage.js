@@ -39,12 +39,14 @@ export default function RegisterPage() {
 
                 <div className="w-full flex items-center justify-between">
 
-                    <CheckboxInput
+                    {/* <CheckboxInput
                         id='conditions'
                         name='conditions'
                         title='I accept terms and conditions'
                         checked
-                    />
+                        onChange={(e) => {
+                        }}
+                    /> */}
 
                     <Link to='/auth'>
                         <p className='text-lg font-normal opacity-60 delay-100 transition-all hover:text-primary'>Forget password?</p>

@@ -26,10 +26,10 @@ const authSlice = createSlice({
         builder.addCase(fetchAccount.fulfilled, (state, action) => {
             const res = action.payload
 
-            if (res && res.data.EC === 0) {
+            if (res && res.EC === 0) {
                 state.isAuthenticated = true
-                state.email = res.data.DT.email
-                state.roleId = res.data.DT.groupId
+                state.email = res.DT.email
+                state.roleId = res.DT.groupId
             }
             state.loadingLogin = false
         })
@@ -42,13 +42,13 @@ const authSlice = createSlice({
         builder.addCase(login.fulfilled, (state, action) => {
             const res = action.payload
 
-            if (res && res.data.EC === 0) {
+            if (res && res.EC === 0) {
                 state.isAuthenticated = true
-                state.email = res.data.DT.email
-                state.roleId = res.data.DT.groupId
+                state.email = res.DT.email
+                state.roleId = res.DT.groupId
             } else {
-                state.errorLogin = res.data.EM;
-                toast.error(res.data.EM)
+                state.errorLogin = res.EM;
+                toast.error(res.EM)
 
             }
             state.loadingLogin = false

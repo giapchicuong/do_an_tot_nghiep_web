@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CheckboxInput({ name, id, title, checked, onClick }) {
+export default function CheckboxInput({ name, id, title, checked = false, onClick }) {
     return (
         <div className='flex gap-2.5'>
             <input

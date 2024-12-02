@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ReactApexChart from 'react-apexcharts';
 import { useSelector } from 'react-redux';
-export default function RadarChart() {
+export default function PiePercentageStarChart() {
 
-    const { listDataPercentageStar } = useSelector(state => state.dashboard);
+    const { listDataPercentageStar } = useSelector(state => state.analyst);
 
     const defaultValue = {
         series: [{

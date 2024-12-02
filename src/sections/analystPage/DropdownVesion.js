@@ -28,7 +28,7 @@ export default function DropdownVersion({ title, data, handleClick, valueSelecte
 
     return (
         <>
-            <div className='relative z-10' ref={dropdownRef}>
+            <div className='relative z-20' ref={dropdownRef}>
                 <button
                     type='button'
                     onClick={toggleDropdown}

@@ -112,12 +112,14 @@ export function LoginPage() {
 
                 <div className="w-full flex items-center justify-between">
 
-                    <CheckboxInput
+                    {/* <CheckboxInput
                         id='remember'
                         name='remember'
                         title='Remember Password'
-                        checked
-                    />
+                        checked={true}
+                        onChange={(e) => {
+                        }}
+                    /> */}
 
                     <Link to='/auth'>
                         <p className='text-lg font-normal opacity-60 delay-100 transition-all hover:text-primary'>Forget password?</p>

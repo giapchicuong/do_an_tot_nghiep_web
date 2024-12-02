@@ -6,10 +6,7 @@ import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
 import { FiBox } from "react-icons/fi";
 import { FaChartLine } from "react-icons/fa";
 import { RxCountdownTimer } from "react-icons/rx";
-import AreaChart from "../components/AreaChart";
-import DefaultTable from "../components/DefaultTable";
 import ButtonCalendar from "../components/ButtonCalendar";
-import { overviewTable } from "../mockData";
 import ColumnStarChart from "../sections/appPage/ColumnStarChart";
 import { useDispatch, useSelector } from "react-redux";
 import { getListButton, getListReviewOptions, getTotalStar } from "../redux/actions/dashboard.action";
@@ -206,7 +203,7 @@ export function DashboardPage() {
 
             <p className="text-2xl font-bold">Tổng số sao đánh giá App</p>
 
-            <ButtonCalendar />
+            <ButtonCalendar isCanDropdown={false} />
 
           </div>
 
@@ -222,7 +219,7 @@ export function DashboardPage() {
 
             <p className="text-2xl font-bold">Chi tiết người đánh giá App</p>
 
-            <ButtonCalendar />
+            <ButtonCalendar isCanDropdown={false} />
           </div>
 
           <DashboardTable data={listDataReviewOption} />

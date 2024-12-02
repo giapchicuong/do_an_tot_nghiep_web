@@ -30,36 +30,36 @@ instance.interceptors.response.use(res => {
     }
 )
 
+
 export const get = async (url) => {
     try {
-        const response = await instance.get(url)
+        const result = await instance.get(url)
 
-        return response
+        return result.data
     } catch (err) {
-        return console.log(err)
+        handleError(err)
     }
 }
 
 export const post = async (url, data) => {
     try {
-        const response = await instance.post(url, data)
+        const result = await instance.post(url, data)
 
-        return response
+        return result.data
     } catch (err) {
-        return console.log(err)
+        handleError(err)
     }
 }
-
 
 export const put = async (url, data) => {
     try {
-        const response = await instance.put(url, data)
-
-        return response
+        const response = await instance.put(url, data);
+        return response.data;
     } catch (err) {
-        return console.log(err)
+        console.log(err);
+        throw err;
     }
-}
+};
 
 export const del = async (url) => {
     try {
@@ -67,7 +67,10 @@ export const del = async (url) => {
 
         return result.data
     } catch (err) {
-        return console.log(err)
+        handleError(err)
     }
 }
 
+const handleError = (err) => {
+    console.log(err)
+}
