@@ -26,7 +26,7 @@ export default function UserStatusLevelsPage() {
 
                 <div className="w-fit h-auto bg-white rounded-[14px] shadow-sm">
 
-                    <FilterLine />
+                    {/* <FilterLine /> */}
                 </div>
 
                 <div className="w-full h-auto p-3 bg-white rounded-[14px] shadow-sm">
