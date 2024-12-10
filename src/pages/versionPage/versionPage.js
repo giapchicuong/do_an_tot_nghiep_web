@@ -55,9 +55,9 @@ export default function VersionPage() {
 
                 <div className="flex justify-between ">
 
-                    {/* <div className="w-fix h-auto bg-white rounded-[14px] shadow-sm">
-                        <FilterLine />
-                    </div> */}
+                    <div className="w-fix h-auto bg-white rounded-[14px] shadow-sm">
+                        {/* <FilterLine /> */}
+                    </div>
 
                     <div className="">
                         <DefaultButton
