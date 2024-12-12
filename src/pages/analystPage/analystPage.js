@@ -34,8 +34,8 @@ export default function AnalystPage() {
         const dates = getDatesInRange([startDate, today]);
 
         setDateAvgChart(dates);
-        setDateOptionMonth({ month: startDate.getMonth() + 2, year: startDate.getFullYear() });
-        setDateStarMonth({ month: startDate.getMonth() + 2, year: startDate.getFullYear() });
+        setDateOptionMonth({ month: startDate.getMonth() + 1, year: startDate.getFullYear() });
+        setDateStarMonth({ month: startDate.getMonth() + 1, year: startDate.getFullYear() });
     }, []);
 
 
