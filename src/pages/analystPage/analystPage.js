@@ -126,7 +126,7 @@ export default function AnalystPage() {
 
                 <div className="w-full p-3 flex flex-col gap-5 bg-white rounded-[14px] shadow-sm">
                     <div className="flex items-center justify-between">
-                        <p className="text-2xl font-bold">Trung bình số sao và tổng từng loại nhãn</p>
+                        <p className="text-2xl font-bold">Mối tương quan số sao và trải nghiệm người dùng</p>
                         <ButtonCalendar
                             buttonLabel={`${dateAvgChart && dateAvgChart.length > 0 ? convertDate(dateAvgChart[0]) : ''} - ${dateAvgChart && dateAvgChart.length > 0 ? convertDate(dateAvgChart[dateAvgChart.length - 1]) : ''}`}
                             onDateChange={handleChangeDateAvgChart}
@@ -139,7 +139,7 @@ export default function AnalystPage() {
                 <div className="grid grid-cols-3 gap-10">
                     <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">
                         <div className="flex items-center justify-between">
-                            <div className="text-[22px] font-bold">Tỷ lệ phần trăm của từng loại nhãn</div>
+                            <div className="text-[22px] font-bold">Tỷ lệ phần trăm trải nghiệm người dùng</div>
                             <ButtonCalendar
                                 buttonLabel={`Tháng ${dateOptionMonth?.month ?? ''}`}
                                 onDateChange={handleChangeDateOption}
@@ -151,7 +151,7 @@ export default function AnalystPage() {
 
                     <div className="w-full p-5 flex flex-col justify-between bg-white rounded-[14px] shadow-sm">
                         <div className="flex items-center justify-between">
-                            <div className="text-[22px] font-bold">Tỷ lệ phần trăm của từng số sao</div>
+                            <div className="text-[22px] font-bold">Tỷ lệ phần trăm số sao phản hồi</div>
                             <ButtonCalendar
                                 buttonLabel={`Tháng ${dateStarMonth?.month ?? ''}`}
                                 onDateChange={handleChangeDateStar}

@@ -73,7 +73,7 @@ export function DashboardPage() {
 
               <div className="flex flex-col gap-2">
 
-                <p className="text-base font-normal text-stroke">Tổng số lượt đánh giá trái cây</p>
+                <p className="text-base font-normal text-stroke">Tổng số lượt đánh giá mức độ tươi trái cây</p>
                 {
                   listDataButton && listDataButton.fruit &&
                   <p className="text-[28px] font-bold">{listDataButton.fruit.total}</p>
@@ -105,7 +105,7 @@ export function DashboardPage() {
 
               <div className="flex flex-col gap-2">
 
-                <p className="text-base font-normal text-stroke">Tổng số lượt đánh giá Model</p>
+                <p className="text-base font-normal text-stroke">Tổng số lượt phản hồi</p>
 
                 {
                   listDataButton && listDataButton.app &&
@@ -139,7 +139,7 @@ export function DashboardPage() {
 
               <div className="flex flex-col gap-2">
 
-                <p className="text-base font-normal text-stroke">Tổng số thành viên mới</p>
+                <p className="text-base font-normal text-stroke">Thành viên đăng ký mới</p>
                 {
                   listDataButton && listDataButton.newMember &&
                   <p className="text-[28px] font-bold">{listDataButton.newMember.total}</p>
@@ -171,7 +171,7 @@ export function DashboardPage() {
 
               <div className="flex flex-col gap-2">
 
-                <p className="text-base font-normal text-stroke">Tổng số người nâng cấp VIP</p>
+                <p className="text-base font-normal text-stroke">Tổng số người nâng cấp tài khoản VIP</p>
                 {
                   listDataButton && listDataButton.updateVip &&
                   <p className="text-[28px] font-bold">{listDataButton.updateVip.total}</p>
@@ -201,7 +201,7 @@ export function DashboardPage() {
 
           <div className="flex items-center justify-between">
 
-            <p className="text-2xl font-bold">Tổng số sao đánh giá App</p>
+            <p className="text-2xl font-bold">Thống kê số sao</p>
 
             <ButtonCalendar isCanDropdown={false} />
 
